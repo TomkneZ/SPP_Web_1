@@ -3,6 +3,8 @@
 <head>
     <meta charset="utf-8" />
     <title>Labs manager</title>
+    <link rel="stylesheet" href="css/labs.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </head>
@@ -16,6 +18,7 @@
       <th scope="col">Number</th>
       <th scope="col">Status</th>
       <th scope="col">Deadline</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
@@ -26,6 +29,7 @@
     <td><%=labs[i].number%></td>
     <td><%=labs[i].status%></td>
     <td><%=labs[i].deadline%></td>
+    <td class="attach" onclick="showAttach('C:\Users\zaben\Desktop\test.txt')"><%=labs[i].attach%></td>
     </tr>
     <%} %> 
   </tbody>
@@ -53,4 +57,18 @@ function tableSearch() {
         }
     }
 }
+
+function showAttach(file) {
+    alert("start");
+    const fs = require("fs");
+    let fileContent = fs.readFileSync("C:\\Users\\zaben\\Desktop\\test.txt", "utf8");
+    alert(fileContent);
+}
+
 </script>
+<style>
+.attach:hover {
+    color: #0275d8;
+    cursor: pointer;
+}
+</style>
