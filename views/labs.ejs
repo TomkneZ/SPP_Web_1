@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Labs manager</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+<body>
+<input class="form-control" type="text" placeholder="Search" id="search-text" onkeyup="tableSearch()">
+<table class="table" id="labs-table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Subject</th>
+      <th scope="col">Number</th>
+      <th scope="col">Status</th>
+      <th scope="col">Deadline</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% for (var i=0; i<labs.length;i++) {%>
+  <tr>
+    <th scope="row"><%=i+1%></th>
+    <td><%=labs[i].subject%></td>
+    <td><%=labs[i].number%></td>
+    <td><%=labs[i].status%></td>
+    <td><%=labs[i].deadline%></td>
+    </tr>
+    <%} %> 
+  </tbody>
+</table>
+    <h3> Add one more lab </h3>
+    <%- include("partials/add.ejs") %>
+</body>
+</html>
+<script>
+function tableSearch() {
+    var phrase = document.getElementById('search-text');
+    var table = document.getElementById('labs-table');
+    var regPhrase = new RegExp(phrase.value, 'i');
+    var flag = false;
+    for (var i = 1; i < table.rows.length; i++) {
+        flag = false;
+        for (var j = table.rows[i].cells.length - 1; j >= 0; j--) {
+            flag = regPhrase.test(table.rows[i].cells[j].innerHTML);
+            if (flag) break;
+        }
+        if (flag) {
+            table.rows[i].style.display = "";
+        } else {
+            table.rows[i].style.display = "none";
+        }
+    }
+}
+</script>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+<body>
+    <form action="/add" method="post">
+        <div class="form-group">
+            <label>Subject</label>
+            <input type="text" class="form-control" name="subject">
+        </div>
+        <div class="form-group">
+            <label>Task number</label>
+             <input type="number" class="form-control" name="number">
+        </div>
+        <div class="form-group">
+            <label>Status</label>
+            <select class="form-control" name="status">
+                <option value="accepted">Accepted</option>
+                <option value="in progress">In progress</option>
+                <option value="done">Done</option>
+                <option value="cancelled">Cancelled</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <lable>Deadline</lable>
+            <input type="date" name="deadline"
+                   min="2021-01-26" max="2021-05-18" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Attach file</label>
+            <input type="file" class="form-control-file">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</body>
+</html>
